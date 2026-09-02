@@ -1,0 +1,27 @@
+# ============================================
+# Docker Compose — Local Development Orchestrator
+# ============================================
+# Single-command deployment: docker-compose up --build
+# ============================================
+
+version: "3.8"
+
+services:
+  ml_api:
+    build: .
+    container_name: ml-prediction-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=models/my_classifier.h5
+      - LOG_LEVEL=INFO
+      - APP_PORT=8000
+    volumes:
+      - ./predictions:/app/predictions
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
