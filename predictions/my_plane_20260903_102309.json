@@ -1,0 +1,17 @@
+{
+  "class_label": "airplane",
+  "probabilities": [
+    0.95,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.05,
+    0.0
+  ],
+  "filename": "my_plane.png",
+  "timestamp": "2026-09-03T10:23:09.217672+00:00"
+}
